@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/layouts/Root";
+import { useSelector } from "react-redux";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 
@@ -79,7 +81,7 @@ const Header = ({ onMenuToggle }) => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
+<div className="flex items-center space-x-3">
           {/* Quick actions */}
           <Button
             size="sm"
@@ -99,6 +101,20 @@ const Header = ({ onMenuToggle }) => {
             className="relative"
           >
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+          </Button>
+
+          {/* Logout Button */}
+          <Button
+            size="sm"
+            variant="outline"
+            icon="LogOut"
+            onClick={() => {
+              const { logout } = useAuth();
+              logout();
+            }}
+            className="hidden sm:flex text-slate-600 hover:text-red-600"
+          >
+            Logout
           </Button>
         </div>
       </div>

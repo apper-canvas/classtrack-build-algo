@@ -38,24 +38,24 @@ const Dashboard = () => {
 
       // Calculate stats
       const totalStudents = students.length;
-      const activeStudents = students.filter(s => s.status === "active").length;
+const activeStudents = students.filter(s => s.status_c === "active").length;
       
       // Calculate attendance rate for this week
       const weekStart = startOfWeek(new Date());
       const weekEnd = endOfWeek(new Date());
-      const thisWeekAttendance = attendance.filter(a => {
-        const date = new Date(a.date);
+const thisWeekAttendance = attendance.filter(a => {
+        const date = new Date(a.date_c);
         return date >= weekStart && date <= weekEnd;
       });
       
-      const presentRecords = thisWeekAttendance.filter(a => a.status === "present").length;
+const presentRecords = thisWeekAttendance.filter(a => a.status_c === "present").length;
       const attendanceRate = thisWeekAttendance.length > 0 
         ? Math.round((presentRecords / thisWeekAttendance.length) * 100)
         : 0;
 
       // Calculate average grade
-      const totalScore = grades.reduce((sum, grade) => {
-        return sum + (grade.score / grade.maxScore) * 100;
+const totalScore = grades.reduce((sum, grade) => {
+        return sum + (grade.score_c / grade.max_score_c) * 100;
       }, 0);
       const averageGrade = grades.length > 0 ? Math.round(totalScore / grades.length) : 0;
 
@@ -69,17 +69,17 @@ const Dashboard = () => {
       // Generate recent activity
       const activities = [
         ...grades.slice(-3).map(grade => ({
-          id: grade.Id,
+id: grade.Id,
           type: "grade",
-          message: `New ${grade.type} grade added for ${grade.subject}`,
-          score: `${grade.score}/${grade.maxScore}`,
-          time: format(new Date(grade.date), "MMM d, h:mm a")
+          message: `New ${grade.type_c} grade added for ${grade.subject_c}`,
+          score: `${grade.score_c}/${grade.max_score_c}`,
+          time: format(new Date(grade.date_c), "MMM d, h:mm a")
         })),
-        ...attendance.slice(-2).filter(a => a.status === "absent").map(a => ({
+        ...attendance.slice(-2).filter(a => a.status_c === "absent").map(a => ({
           id: a.Id,
           type: "absence",
           message: `Student marked absent`,
-          time: format(new Date(a.date), "MMM d, h:mm a")
+          time: format(new Date(a.date_c), "MMM d, h:mm a")
         }))
       ].slice(0, 5);
 

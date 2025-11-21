@@ -13,13 +13,13 @@ const GradeForm = ({
   loading = false 
 }) => {
   const [formData, setFormData] = useState({
-    studentId: grade?.studentId || "",
-    subject: grade?.subject || "",
-    score: grade?.score || "",
-    maxScore: grade?.maxScore || "100",
-    date: grade?.date ? format(new Date(grade.date), "yyyy-MM-dd") : format(new Date(), "yyyy-MM-dd"),
-    type: grade?.type || "",
-    term: grade?.term || ""
+student_id_c: grade?.student_id_c?.Id || grade?.student_id_c || "",
+    subject_c: grade?.subject_c || "",
+    score_c: grade?.score_c || "",
+    max_score_c: grade?.max_score_c || "100",
+    date_c: grade?.date_c ? format(new Date(grade.date_c), "yyyy-MM-dd") : format(new Date(), "yyyy-MM-dd"),
+    type_c: grade?.type_c || "",
+    term_c: grade?.term_c || ""
   });
 
   const [errors, setErrors] = useState({});
@@ -54,8 +54,8 @@ const GradeForm = ({
   ];
 
   const studentOptions = students.map(student => ({
-    value: student.Id.toString(),
-    label: `${student.firstName} ${student.lastName} (${student.studentId})`
+value: student.Id.toString(),
+    label: `${student.first_name_c} ${student.last_name_c} (${student.student_id_c})`
   }));
 
   const validateForm = () => {
@@ -99,11 +99,11 @@ const GradeForm = ({
     e.preventDefault();
     
     if (validateForm()) {
-      onSubmit({
+onSubmit({
         ...formData,
-        score: parseFloat(formData.score),
-        maxScore: parseFloat(formData.maxScore),
-        date: new Date(formData.date).toISOString()
+        score_c: parseFloat(formData.score_c),
+        max_score_c: parseFloat(formData.max_score_c),
+        date_c: new Date(formData.date_c).toISOString()
       });
     }
   };

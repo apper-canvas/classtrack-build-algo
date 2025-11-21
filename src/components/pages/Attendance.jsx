@@ -41,11 +41,21 @@ const Attendance = () => {
     try {
       if (attendanceId) {
         // Update existing record
-        await attendanceService.update(attendanceId, attendanceData);
+await attendanceService.update(attendanceId, {
+          student_id_c: parseInt(attendanceData.student_id_c),
+          date_c: attendanceData.date_c,
+          status_c: attendanceData.status_c,
+          notes_c: attendanceData.notes_c
+        });
         toast.success("Attendance updated successfully!");
       } else {
         // Create new record
-        await attendanceService.create(attendanceData);
+        await attendanceService.create({
+          student_id_c: parseInt(attendanceData.student_id_c),
+          date_c: attendanceData.date_c,
+          status_c: attendanceData.status_c,
+          notes_c: attendanceData.notes_c
+        });
         toast.success("Attendance marked successfully!");
       }
       
@@ -60,7 +70,7 @@ const Attendance = () => {
 
   const handleBulkAttendance = async (date, status) => {
     try {
-      const activeStudentIds = students.map(s => s.Id.toString());
+const activeStudentIds = students.filter(s => s.status_c === "active").map(s => s.Id.toString());
       await attendanceService.bulkMarkAttendance(activeStudentIds, date, status);
       toast.success(`All students marked as ${status}!`);
       

@@ -1,12 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { format, startOfDay } from "date-fns";
-import AttendanceCalendar from "@/components/molecules/AttendanceCalendar";
-import Button from "@/components/atoms/Button";
-import Select from "@/components/atoms/Select";
-import Badge from "@/components/atoms/Badge";
-import Card from "@/components/atoms/Card";
 import ApperIcon from "@/components/ApperIcon";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Badge from "@/components/atoms/Badge";
+import Attendance from "@/components/pages/Attendance";
+import { attendanceService } from "@/services/attendanceService";
+import AttendanceCalendar from "@/components/molecules/AttendanceCalendar";
 
 const AttendanceManager = ({ 
   students = [], 
@@ -18,9 +20,9 @@ const AttendanceManager = ({
   const [selectedStudent, setSelectedStudent] = useState("");
   const [bulkStatus, setBulkStatus] = useState("present");
 
-  const studentOptions = students.map(student => ({
+const studentOptions = students.map(student => ({
     value: student.Id.toString(),
-    label: `${student.firstName} ${student.lastName} (${student.studentId})`
+    label: `${student.first_name_c} ${student.last_name_c} (${student.student_id_c})`
   }));
 
   const statusOptions = [
@@ -56,11 +58,13 @@ const AttendanceManager = ({
 
   // Get students with their attendance status for selected date
   const getStudentsWithAttendance = () => {
-    return students.map(student => {
-      const record = todayAttendance.find(a => a.studentId === student.Id.toString());
+return students.map(student => {
+      const record = todayAttendance.find(a => 
+        a.student_id_c?.Id === student.Id || a.student_id_c === student.Id
+      );
       return {
         ...student,
-        attendanceStatus: record?.status || null,
+        attendanceStatus: record?.status_c || null,
         attendanceId: record?.Id || null
       };
     });
@@ -68,25 +72,34 @@ const AttendanceManager = ({
 
   const studentsWithAttendance = getStudentsWithAttendance();
 
-  const handleMarkAttendance = (studentId, status) => {
+const handleMarkAttendance = async (studentId, status) => {
     const student = studentsWithAttendance.find(s => s.Id.toString() === studentId);
     
-    if (student?.attendanceId) {
+    try {
       // Update existing record
-      onMarkAttendance(student.attendanceId, {
-        studentId,
-        date: selectedDate.toISOString(),
-        status,
-        notes: ""
-      });
-    } else {
-      // Create new record
-      onMarkAttendance(null, {
-        studentId,
-        date: selectedDate.toISOString(),
-        status,
-        notes: ""
-      });
+      if (student?.attendanceId) {
+        await attendanceService.update(student.attendanceId, {
+          student_id_c: parseInt(studentId),
+          date_c: selectedDate.toISOString(),
+          status_c: status,
+          notes_c: ""
+        });
+      } else {
+        // Create new record
+        await attendanceService.create({
+          student_id_c: parseInt(studentId),
+          date_c: selectedDate.toISOString(),
+          status_c: status,
+          notes_c: ""
+        });
+      }
+      
+      // Refresh attendance data if callback provided
+      if (onMarkAttendance) {
+        onMarkAttendance(studentId, status);
+      }
+    } catch (error) {
+      console.error('Failed to mark attendance:', error);
     }
   };
 
@@ -192,29 +205,27 @@ const AttendanceManager = ({
 
         <div className="divide-y divide-slate-200">
           {studentsWithAttendance.map((student) => (
-            <motion.div
+<motion.div
               key={student.Id}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="px-6 py-4 hover:bg-slate-50 transition-colors duration-200"
+              layout
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="bg-white rounded-xl p-4 shadow-sm border border-slate-200 hover:shadow-md transition-all"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-semibold text-white">
-                      {student.firstName[0]}{student.lastName[0]}
-                    </span>
-                  </div>
-                  
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <span className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                    {student.first_name_c?.[0]}{student.last_name_c?.[0]}
+                  </span>
                   <div>
                     <h4 className="font-medium text-slate-900">
-                      {student.firstName} {student.lastName}
+                      {student.first_name_c} {student.last_name_c}
                     </h4>
-                    <p className="text-sm text-slate-500">
-                      {student.studentId} • Grade {student.gradeLevel} - {student.section}
+<p className="text-sm text-slate-500">
+                      {student.student_id_c} • {student.grade_level_c} - {student.section_c}
                     </p>
                   </div>
-                  
                   {student.attendanceStatus && (
                     <Badge variant={getStatusColor(student.attendanceStatus)}>
                       <ApperIcon name={getStatusIcon(student.attendanceStatus)} className="h-3 w-3 mr-1" />

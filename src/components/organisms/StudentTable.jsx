@@ -23,26 +23,26 @@ const StudentTable = ({
   const filteredStudents = students
     .filter((student) => {
       const matchesSearch = searchQuery === "" || 
-        student.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        student.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        student.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        student.studentId.toLowerCase().includes(searchQuery.toLowerCase());
+student.first_name_c?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.last_name_c?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.email_c?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.student_id_c?.toLowerCase().includes(searchQuery.toLowerCase());
       
-      const matchesGrade = filterGrade === "" || student.gradeLevel === filterGrade;
-      const matchesStatus = filterStatus === "" || student.status === filterStatus;
+      const matchesGrade = filterGrade === "" || student.grade_level_c === filterGrade;
+      const matchesStatus = filterStatus === "" || student.status_c === filterStatus;
       
       return matchesSearch && matchesGrade && matchesStatus;
     })
     .sort((a, b) => {
       switch (sortBy) {
-        case "name":
-          return a.firstName.localeCompare(b.firstName);
+case "name":
+          return a.first_name_c?.localeCompare(b.first_name_c) || 0;
         case "id":
-          return a.studentId.localeCompare(b.studentId);
+          return a.student_id_c?.localeCompare(b.student_id_c) || 0;
         case "grade":
-          return a.gradeLevel.localeCompare(b.gradeLevel);
+          return a.grade_level_c?.localeCompare(b.grade_level_c) || 0;
         case "enrollment":
-          return new Date(a.enrollmentDate) - new Date(b.enrollmentDate);
+          return new Date(a.enrollment_date_c) - new Date(b.enrollment_date_c);
         default:
           return 0;
       }
