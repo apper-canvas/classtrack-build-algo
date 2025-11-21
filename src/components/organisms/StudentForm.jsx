@@ -110,8 +110,8 @@ const StudentForm = ({
     <motion.form
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      onSubmit={handleSubmit}
-      className="space-y-6"
+onSubmit={handleSubmit}
+      className="space-y-6 overflow-y-auto max-h-96"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
