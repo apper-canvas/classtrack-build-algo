@@ -1,0 +1,112 @@
+[
+  {
+    "Id": 1,
+    "studentId": "1",
+    "subject": "Mathematics",
+    "score": 88,
+    "maxScore": 100,
+    "date": "2024-01-20T00:00:00.000Z",
+    "type": "test",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 2,
+    "studentId": "1",
+    "subject": "English",
+    "score": 92,
+    "maxScore": 100,
+    "date": "2024-01-21T00:00:00.000Z",
+    "type": "assignment",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 3,
+    "studentId": "1",
+    "subject": "Science",
+    "score": 85,
+    "maxScore": 100,
+    "date": "2024-01-22T00:00:00.000Z",
+    "type": "quiz",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 4,
+    "studentId": "2",
+    "subject": "Mathematics",
+    "score": 78,
+    "maxScore": 100,
+    "date": "2024-01-20T00:00:00.000Z",
+    "type": "test",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 5,
+    "studentId": "2",
+    "subject": "English",
+    "score": 89,
+    "maxScore": 100,
+    "date": "2024-01-21T00:00:00.000Z",
+    "type": "assignment",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 6,
+    "studentId": "3",
+    "subject": "Mathematics",
+    "score": 95,
+    "maxScore": 100,
+    "date": "2024-01-20T00:00:00.000Z",
+    "type": "test",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 7,
+    "studentId": "3",
+    "subject": "History",
+    "score": 87,
+    "maxScore": 100,
+    "date": "2024-01-23T00:00:00.000Z",
+    "type": "project",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 8,
+    "studentId": "4",
+    "subject": "Science",
+    "score": 82,
+    "maxScore": 100,
+    "date": "2024-01-22T00:00:00.000Z",
+    "type": "quiz",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 9,
+    "studentId": "4",
+    "subject": "Mathematics",
+    "score": 76,
+    "maxScore": 100,
+    "date": "2024-01-24T00:00:00.000Z",
+    "type": "exam",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 10,
+    "studentId": "5",
+    "subject": "English",
+    "score": 94,
+    "maxScore": 100,
+    "date": "2024-01-21T00:00:00.000Z",
+    "type": "assignment",
+    "term": "1st Quarter"
+  },
+  {
+    "Id": 11,
+    "studentId": "5",
+    "subject": "Geography",
+    "score": 91,
+    "maxScore": 100,
+    "date": "2024-01-25T00:00:00.000Z",
+    "type": "project",
+    "term": "1st Quarter"
+  }
+]

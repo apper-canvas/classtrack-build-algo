@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "studentId": "STU001",
+    "email": "emma.johnson@email.com",
+    "phone": "+1234567890",
+    "enrollmentDate": "2024-01-15T00:00:00.000Z",
+    "gradeLevel": "10",
+    "section": "A",
+    "status": "active"
+  },
+  {
+    "Id": 2,
+    "firstName": "Liam",
+    "lastName": "Smith",
+    "studentId": "STU002",
+    "email": "liam.smith@email.com",
+    "phone": "+1234567891",
+    "enrollmentDate": "2024-01-16T00:00:00.000Z",
+    "gradeLevel": "10",
+    "section": "A",
+    "status": "active"
+  },
+  {
+    "Id": 3,
+    "firstName": "Olivia",
+    "lastName": "Brown",
+    "studentId": "STU003",
+    "email": "olivia.brown@email.com",
+    "phone": "+1234567892",
+    "enrollmentDate": "2024-01-17T00:00:00.000Z",
+    "gradeLevel": "11",
+    "section": "B",
+    "status": "active"
+  },
+  {
+    "Id": 4,
+    "firstName": "Noah",
+    "lastName": "Davis",
+    "studentId": "STU004",
+    "email": "noah.davis@email.com",
+    "phone": "+1234567893",
+    "enrollmentDate": "2024-01-18T00:00:00.000Z",
+    "gradeLevel": "9",
+    "section": "C",
+    "status": "active"
+  },
+  {
+    "Id": 5,
+    "firstName": "Ava",
+    "lastName": "Wilson",
+    "studentId": "STU005",
+    "email": "ava.wilson@email.com",
+    "phone": "+1234567894",
+    "enrollmentDate": "2024-01-19T00:00:00.000Z",
+    "gradeLevel": "12",
+    "section": "A",
+    "status": "active"
+  },
+  {
+    "Id": 6,
+    "firstName": "William",
+    "lastName": "Miller",
+    "studentId": "STU006",
+    "email": "william.miller@email.com",
+    "phone": "+1234567895",
+    "enrollmentDate": "2024-01-20T00:00:00.000Z",
+    "gradeLevel": "10",
+    "section": "B",
+    "status": "inactive"
+  },
+  {
+    "Id": 7,
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "studentId": "STU007",
+    "email": "sophia.taylor@email.com",
+    "phone": "+1234567896",
+    "enrollmentDate": "2024-01-21T00:00:00.000Z",
+    "gradeLevel": "11",
+    "section": "A",
+    "status": "active"
+  },
+  {
+    "Id": 8,
+    "firstName": "James",
+    "lastName": "Anderson",
+    "studentId": "STU008",
+    "email": "james.anderson@email.com",
+    "phone": "+1234567897",
+    "enrollmentDate": "2024-01-22T00:00:00.000Z",
+    "gradeLevel": "9",
+    "section": "B",
+    "status": "active"
+  },
+  {
+    "Id": 9,
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "studentId": "STU009",
+    "email": "isabella.thomas@email.com",
+    "phone": "+1234567898",
+    "enrollmentDate": "2024-01-23T00:00:00.000Z",
+    "gradeLevel": "12",
+    "section": "C",
+    "status": "suspended"
+  },
+  {
+    "Id": 10,
+    "firstName": "Benjamin",
+    "lastName": "Jackson",
+    "studentId": "STU010",
+    "email": "benjamin.jackson@email.com",
+    "phone": "+1234567899",
+    "enrollmentDate": "2024-01-24T00:00:00.000Z",
+    "gradeLevel": "10",
+    "section": "C",
+    "status": "active"
+  }
+]

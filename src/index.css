@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React Toastify Custom Styles */
+@import 'react-toastify/dist/ReactToastify.css';
+
+.Toastify__toast {
+  @apply rounded-lg shadow-lg border border-slate-200;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.Toastify__toast--success {
+  @apply bg-white border-emerald-200;
+}
+
+.Toastify__toast--error {
+  @apply bg-white border-red-200;
+}
+
+.Toastify__toast--warning {
+  @apply bg-white border-amber-200;
+}
+
+.Toastify__toast--info {
+  @apply bg-white border-blue-200;
+}
+
+.Toastify__progress-bar {
+  @apply bg-primary-600;
+}
+
+.Toastify__close-button {
+  @apply text-slate-400;
+}
+
+@layer base {
+  * {
+    @apply border-0;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-slate-50 text-slate-700 antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+}
