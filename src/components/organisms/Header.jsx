@@ -9,7 +9,7 @@ import ApperIcon from "@/components/ApperIcon";
 const Header = ({ onMenuToggle }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const { logout } = useAuth();
   const getPageTitle = (pathname) => {
     switch (pathname) {
       case "/":
@@ -108,8 +108,7 @@ const Header = ({ onMenuToggle }) => {
             size="sm"
             variant="outline"
             icon="LogOut"
-            onClick={() => {
-              const { logout } = useAuth();
+onClick={() => {
               logout();
             }}
             className="hidden sm:flex text-slate-600 hover:text-red-600"
